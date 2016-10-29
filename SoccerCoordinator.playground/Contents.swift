@@ -4,116 +4,37 @@ import UIKit
 
 // I would use a function to add each player to the array to prevent misspellings
 
-let players: [[String:Any]] = [
-    [
-        "name": "Joe Smith",
-        "height": 42.0,
-        "experience": "Yes",
-        "guardian": "Jim and Jan Smith"
-    ],
-    [
-        "name": "Jill Tanner",
-        "height": 36.0,
-        "experience": "Yes",
-        "guardian": "Clara Tanner"
-    ],
-    [
-        "name": "Bill Bon",
-        "height": 43.0,
-        "experience": "Yes",
-        "guardian": "Sarah and Jenny Bon"
-    ],
-    [
-        "name": "Eva Gordon",
-        "height": 45.0,
-        "experience": "No",
-        "guardian": "Wendy and Mike Gordon"
-    ],
-    [
-        "name": "Matt Gill",
-        "height": 40.0,
-        "experience": "No",
-        "guardian": "Charles and Sylvia Gill"
-    ],
-    [
-        "name": "Kimmy Stein",
-        "height": 41.0,
-        "experience": "No",
-        "guardian": "Bill and Hillary Stein"
-    ],
-    [
-        "name": "Sammy Adams",
-        "height": 45.0,
-        "experience": "No",
-        "guardian": "Jeff Adams"
-    ],
-    [
-        "name": "Kari Saygun",
-        "height": 42.0,
-        "experience": "Yes",
-        "guardian": "Heather Bledsoe"
-    ],
-    [
-        "name": "Suzane Greenberg",
-        "height": 44.0,
-        "experience": "Yes",
-        "guardian": "Henrietta Dumas"
-    ],
-    [
-        "name": "Sal Dali",
-        "height": 41.0,
-        "experience": "No",
-        "guardian": "Gala Dali"
-    ],
-    [
-        "name": "Joe Kavalier",
-        "height": 39.0,
-        "experience": "No",
-        "guardian": "Sam and Elaine Kavalier"
-    ],
-    [
-        "name": "Ben Finkelstein",
-        "height": 44.0,
-        "experience": "No",
-        "guardian": "Aaron and Jill Finkelstein"
-    ],
-    [
-        "name": "Diego Soto",
-        "height": 41.0,
-        "experience": "Yes",
-        "guardian": "Robin and Sarika Soto"
-    ],
-    [
-        "name": "Chloe Alaska",
-        "height": 47.0,
-        "experience": "No",
-        "guardian": "David and Jamie Alaska"
-    ],
-    [
-        "name": "Arnold Willis",
-        "height": 43.0,
-        "experience": "No",
-        "guardian": "Claire Willis"
-    ],
-    [
-        "name": "Phillip Helm",
-        "height": 44.0,
-        "experience": "Yes",
-        "guardian": "Thomas Helm and Eva Jones"
-    ],
-    [
-        "name": "Les Clay",
-        "height": 42.0,
-        "experience": "Yes",
-        "guardian": "Wynonna Brown"
-    ],
-    [
-        "name": "Herschel Krustofski",
-        "height": 45.0,
-        "experience": "Yes",
-        "guardian": "Hyman and Rachel Krustofski"
-    ]
-]
+var players: [[String:Any]] = []
+
+func addPlayer(name: String, height: Double, experience: String, guardian: String) {
+    let player: [String:Any] = [
+            "name": name,
+            "height": height,
+            "experience": experience,
+            "guardian": guardian
+        ]
+    
+    players.append(player)
+}
+
+addPlayer(name: "Joe Smith", height: 42.0, experience: "Yes", guardian: "Jim nad Jan Smith")
+addPlayer(name: "Jill Tanner", height: 36.0, experience: "Yes", guardian: "Clara Tanner")
+addPlayer(name: "Bill Bon", height: 43.0, experience: "Yes", guardian: "Sarah and Jenny Bon")
+addPlayer(name: "Eva Gordon", height: 45.0, experience: "No", guardian: "Wendy and Mike Gordon")
+addPlayer(name: "Matt Gill", height: 40.0, experience: "No", guardian: "Charles and Sylvia Gill")
+addPlayer(name: "Kimmy Stein", height: 41.0, experience: "No", guardian: "Bill and Hillary Stein")
+addPlayer(name: "Sammy Adams", height: 45.0, experience: "No", guardian: "Jeff Adams")
+addPlayer(name: "Kari Saygun", height: 42.0, experience: "Yes", guardian: "Heather Bledsoe")
+addPlayer(name: "Suzane Greenberg", height: 44.0, experience: "Yes", guardian: "Henrietta Dumas")
+addPlayer(name: "Sal Dali", height: 41.0, experience: "No", guardian: "Gala Dali")
+addPlayer(name: "Joe Kavalier", height: 39.0, experience: "No", guardian: "Same and Elaine Kavalier")
+addPlayer(name: "Ben Finkelstein", height: 44.0, experience: "No", guardian: "Aaron and Jill Finkelstein")
+addPlayer(name: "Diego Soto", height: 41.0, experience: "Yes", guardian: "Robin and Sarika Soto")
+addPlayer(name: "Chloe Alaska", height: 47.0, experience: "No", guardian: "David and Jamie Alaska")
+addPlayer(name: "Arnold Willis", height: 43.0, experience: "No", guardian: "Claire Willis")
+addPlayer(name: "Phillip Helm", height: 44.0, experience: "Yes", guardian: "Thomas Helm and Eva Jones")
+addPlayer(name: "Les Clay", height: 42.0, experience: "Yes", guardian: "Wynonna Brown")
+addPlayer(name: "Herschel Krustofski", height: 45, experience: "Yes", guardian: "Hyman and Rachel Krustofski")
 
 
 var experiencedPlayers: [[String:Any]] = []
