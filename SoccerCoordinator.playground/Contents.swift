@@ -2,10 +2,9 @@
 
 import UIKit
 
-// I would use a function to add each player to the array to prevent misspellings
+var playersArray: [[String:Any]] = []
 
-var players: [[String:Any]] = []
-
+// This function adds players to the playersArray
 func addPlayer(name: String, height: Double, experience: String, guardian: String) {
     let player: [String:Any] = [
             "name": name,
@@ -14,7 +13,7 @@ func addPlayer(name: String, height: Double, experience: String, guardian: Strin
             "guardian": guardian
         ]
     
-    players.append(player)
+    playersArray.append(player)
 }
 
 addPlayer(name: "Joe Smith", height: 42.0, experience: "Yes", guardian: "Jim nad Jan Smith")
@@ -36,34 +35,38 @@ addPlayer(name: "Phillip Helm", height: 44.0, experience: "Yes", guardian: "Thom
 addPlayer(name: "Les Clay", height: 42.0, experience: "Yes", guardian: "Wynonna Brown")
 addPlayer(name: "Herschel Krustofski", height: 45, experience: "Yes", guardian: "Hyman and Rachel Krustofski")
 
-
 var experiencedPlayers: [[String:Any]] = []
 var inexperiencedPlayers: [[String:Any]] = []
+
+// This function distributes players based on their experience
+func experienceDistribution(team: [[String:Any]]) {
+    for player in team {
+            if let experience = player["experience"] as? String {
+                if experience == "Yes"  {
+                    experiencedPlayers.append(player)
+                } else {
+                    inexperiencedPlayers.append(player)
+            }
+        }
+    }
+}
+
+experienceDistribution(team: playersArray)
+
+
+
+// Sorts each array by the height of the player
+experiencedPlayers.sort { ($0["height"] as? Double)! < ($1["height"] as? Double)! }
+inexperiencedPlayers.sort { ($0["height"] as? Double)! > ($1["height"] as? Double)! }
+
 
 var dragons: [[String:Any]] = []
 var sharks: [[String:Any]] = []
 var raptors: [[String:Any]] = []
 
 
-for player in players {
-    if let experience = player["experience"] as? String {
-        if experience == "Yes"  {
-            experiencedPlayers.append(player)
-        } else {
-            inexperiencedPlayers.append(player)
-        }
-    }
-}
-
-// Sorts each array by the height of the player from tallest to shortest
-experiencedPlayers.sort { ($0["height"] as? Double)! > ($1["height"] as? Double)! }
-inexperiencedPlayers.sort { ($0["height"] as? Double)! > ($1["height"] as? Double)! }
-
-//print(experiencedPlayers)
-
-
-func teamDistribution(team: [[String:Any]]) {
-        for (index, value) in team.enumerated() {
+func playerDistribution(experienceGroup: [[String:Any]]) {
+        for (index, value) in experienceGroup.enumerated() {
         if index % 3 == 0 {
             dragons.append(value)
         } else if index % 3 == 1 {
@@ -74,14 +77,31 @@ func teamDistribution(team: [[String:Any]]) {
     }
 }
 
-teamDistribution(team: experiencedPlayers)
-teamDistribution(team: inexperiencedPlayers)
+playerDistribution(experienceGroup: experiencedPlayers)
+playerDistribution(experienceGroup: inexperiencedPlayers)
 
-func teamMeanHeight(team: [[String:Any]]) -> Double {
+
+
+// This function creates a letter sent to the guardians of the player
+
+func playerLetter(teamArray: [[String:Any]], teamName: String, firstPractice: String) {
+    
+    for player in teamArray {
+        if let name = player["name"] as? String, let guardian = player["guardian"] as? String {
+            print("Dear \(guardian),\n\(name) has been selected to play for the \(teamName).  The first practice will be on \(firstPractice). We look forward to having an exciting season\n")
+        }
+    }
+}
+
+playerLetter(teamArray: dragons, teamName: "Dragons", firstPractice: "")
+
+ 
+ 
+// This function takes one of the teams as an arguement and will calculate the average height of the players
+func teamAverageHeight(team: [[String:Any]]) -> Double {
     
     var teamHeightArray: [Double] = []
     var teamHeight: Double = 0.0
-    var teamCount:Double = 0.0
     
     for player in team {
         if let height = player["height"] as? Double {
@@ -92,15 +112,23 @@ func teamMeanHeight(team: [[String:Any]]) -> Double {
     for i in teamHeightArray {
         teamHeight += i
     }
+
     
-    teamCount = Double(teamHeightArray.count)
-    
-    return teamHeight / teamCount
+    return teamHeight / Double(teamHeightArray.count)
 }
 
-teamMeanHeight(team: dragons)
-teamMeanHeight(team: sharks)
-teamMeanHeight(team: raptors)
+
+teamAverageHeight(team: dragons)
+teamAverageHeight(team: sharks)
+teamAverageHeight(team: raptors)
+
+
+
+
+
+
+
+
 
 
 
