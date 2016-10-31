@@ -6,13 +6,13 @@ var playersArray: [[String:Any]] = []
 
 // This function adds players to the playersArray
 func addPlayer(name: String, height: Double, experience: String, guardian: String) {
+    
     let player: [String:Any] = [
             "name": name,
             "height": height,
             "experience": experience,
             "guardian": guardian
         ]
-    
     playersArray.append(player)
 }
 
@@ -40,6 +40,7 @@ var inexperiencedPlayers: [[String:Any]] = []
 
 // This function distributes players based on their experience
 func experienceDistribution(team: [[String:Any]]) {
+    
     for player in team {
             if let experience = player["experience"] as? String {
                 if experience == "Yes"  {
@@ -66,6 +67,7 @@ var raptors: [[String:Any]] = []
 
 
 func playerDistribution(experienceGroup: [[String:Any]]) {
+    
         for (index, value) in experienceGroup.enumerated() {
         if index % 3 == 0 {
             dragons.append(value)
@@ -93,7 +95,9 @@ func playerLetter(teamArray: [[String:Any]], teamName: String, firstPractice: St
     }
 }
 
-playerLetter(teamArray: dragons, teamName: "Dragons", firstPractice: "")
+playerLetter(teamArray: dragons, teamName: "Dragons", firstPractice: "March 17th, 1pm")
+playerLetter(teamArray: sharks, teamName: "Sharks", firstPractice: "March 17th, 3pm")
+playerLetter(teamArray: raptors, teamName: "Raptors", firstPractice: "March 18th, 1pm")
 
  
  
@@ -108,12 +112,9 @@ func teamAverageHeight(team: [[String:Any]]) -> Double {
             teamHeightArray.append(height)
             }
         }
-    
     for i in teamHeightArray {
         teamHeight += i
     }
-
-    
     return teamHeight / Double(teamHeightArray.count)
 }
 
